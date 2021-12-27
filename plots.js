@@ -27,6 +27,7 @@ function InitDashboard() {
 
 function optionChanged(id) {
 
+    //when an option changes in the drop down, refresh data by calling these functions
     console.log(id);
 
     //populate the demographic info
@@ -90,12 +91,12 @@ function populateDemographics (sampleId) {
         console.log(metadata);
         let resultArray = metadata.filter(s => s.id === parseInt(sampleId)); 
         let result = resultArray[0];
-
         var demoData = d3.select("#sample-metadata");
 
         // Clear the existing data 
         demoData.html("");
 
+        //loop through the key values for the metadata to display 
         Object.entries(result).forEach(([key, value]) => {
             demoData.append("h6").text(`${key}: ${value}`);
         });
